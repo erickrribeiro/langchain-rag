@@ -1,0 +1,9 @@
+faiss-gpu==1.7.2
+langchain==0.2.6
+langchain-community==0.2.6
+langchain-core==0.2.10
+langsmith==0.1.82
+openai==1.35.7
+pypdf==4.2.0
+streamlit==1.36.0
+tiktoken==0.7.0
