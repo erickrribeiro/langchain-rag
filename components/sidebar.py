@@ -51,7 +51,6 @@ def sidebar():
         documents_uploads = st.file_uploader(
             "Carregar documentos",
             accept_multiple_files=True,
-            help="Formatos suportados: pdf, docx, doc, txt, ppt, csv, html, xls",
         )
         if documents_uploads:
             for uploaded_file in documents_uploads:
@@ -63,7 +62,6 @@ def sidebar():
 
         documents_uploads_url = st.text_input(
             "Carregar documentos via url",
-            help="Formatos suportados: pdf, docx, doc, txt, ppt, csv, html, xls",
         )
         submit_button = st.button("Link para upload")
         if submit_button and documents_uploads_url:
