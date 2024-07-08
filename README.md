@@ -1,4 +1,4 @@
-# DIEBOLD: CHATDEMO with RAG
+# CHATDEMO with RAG
 
 ## Getting started
 

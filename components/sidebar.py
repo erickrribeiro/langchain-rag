@@ -60,23 +60,14 @@ def sidebar():
 
         st.markdown("***")
 
-        documents_uploads_url = st.text_input(
-            "Carregar documentos via url",
+        st.checkbox(
+            label="Habilita áudio",
+            value=True,
+            key="enable_audio",
+            help="Quando habilitado, transcreve a resposta textual do chatbot para áudio.",
         )
-        submit_button = st.button("Link para upload")
-        if submit_button and documents_uploads_url:
-            file_info = upload_file_via_url(documents_uploads_url)
-            if file_info:
-                saved_files_info.append(file_info)
-
         st.markdown("***")
-
-        with st.expander("Credenciais"):
-            openai_keys = st.text_input(
-                "Chave API OpenAI", type="password", value=os.environ["OPENAI_API_KEY"]
-            )
-
-        st.markdown("***")
+        openai_keys = os.environ["OPENAI_API_KEY"]
         complete_button = st.button(
             "Configuração completa", disabled=not (saved_files_info and openai_keys)
         )

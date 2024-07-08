@@ -1,6 +1,7 @@
 import openai
 import streamlit as st
 
+from components.audio import autoplay_audio3
 from components.sidebar import sidebar
 from components.utils import initialize_state, load_qa_chain
 
@@ -31,10 +32,10 @@ def main():
     col1, col2 = st.columns(spec=[0.4, 0.6])
 
     with col1:
-        st.image('./assets/logo.png', width=150)
+        st.image("./assets/robot.png", width=150)
 
     with col2:
-        st.title("Chat Diebold (Privacy Security)")
+        st.title("Um Chatbot que lê documentos")
 
     # Invoke the sidebar for user inputs like file uploads and OpenAI keys
     saved_files_info, openai_keys = sidebar()
@@ -84,6 +85,8 @@ def main():
             with st.chat_message(message["role"]):
                 st.write(message["content"])
 
+        last_message = st.session_state.messages[-1]["content"]
+        autoplay_audio3(last_message)
     else:
         st.info("Conclua a configuração na barra lateral para prosseguir.")
         # Disable the chat input if the API key is invalid
