@@ -8,34 +8,20 @@ from components.utils import initialize_state, load_qa_chain
 
 def main():
     # Set up the Streamlit page configuration and title
-    st.set_page_config(page_title="Chat Diebold (Privacy Security)")
-    st.markdown("""
-        <style>
-        .icon {
-            position: fixed;
-            # bottom: 10px;
-            right: 10px;
-            font-size: 40px;
-            color: #007BFF;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-
-    # Include the Font Awesome script and the icon
-    st.markdown("""
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <i class="fas fa-database icon"></i>
-        """, unsafe_allow_html=True)
+    st.set_page_config(
+        page_title="Intelligent Assistant (Secure and Private)",
+        layout="wide",
+    )
 
     # Display the main content
-    # st.image('./assets/officedatabase_104402.png')
-    col1, col2 = st.columns(spec=[0.4, 0.6])
+    col1, col2 = st.columns(spec=[0.2, 0.8])
 
     with col1:
-        st.image("./assets/robot.png", width=150)
+        st.image("./assets/jabil-light.png", width=250)
 
     with col2:
-        st.title("Um Chatbot que lê documentos")
+        st.header("Intelligent Assistant (Secure and Private)")
+        st.subheader("Análise e extração de insights com IA")
 
     # Invoke the sidebar for user inputs like file uploads and OpenAI keys
     saved_files_info, openai_keys = sidebar()
