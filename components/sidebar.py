@@ -3,6 +3,11 @@ import tempfile
 import requests
 import streamlit as st
 
+from components.dialog import (
+    audio_feature,
+    future_feature,
+)
+
 ALLOWED_EXTENSIONS = [".pdf", ".docx", ".doc", ".txt", ".ppt", ".csv", ".html", ".xls"]
 
 
@@ -48,6 +53,7 @@ def upload_file_via_url(url):
 def sidebar():
     saved_files_info = get_saved_files_info()
     with st.sidebar:
+        st.header("Aprendizado")
         documents_uploads = st.file_uploader(
             "Carregar documentos",
             accept_multiple_files=True,
@@ -58,21 +64,24 @@ def sidebar():
                 if file_info:
                     saved_files_info.append(file_info)
 
-        st.markdown("***")
-
-        st.checkbox(
-            label="Habilita áudio",
-            value=True,
-            key="enable_audio",
-            help="Quando habilitado, transcreve a resposta textual do chatbot para áudio.",
-        )
-        st.markdown("***")
         openai_keys = os.environ["OPENAI_API_KEY"]
         complete_button = st.button(
-            "Configuração completa", disabled=not (saved_files_info and openai_keys)
+            "📋Ler os Documentos",
+            disabled=not (saved_files_info and openai_keys),
+            use_container_width=True,
         )
 
-        if complete_button:
-            return saved_files_info, openai_keys
-        else:
-            return None, None
+        st.markdown("***")
+        st.header("Funcinalidades")
+
+        audio_button = st.button("🔊 Resposta com Voz", use_container_width=True)
+        if audio_button:
+            audio_feature()
+        database_button = st.button(
+            "🔁 Conectar Banco de Dados",
+            use_container_width=True,
+        )
+        if database_button:
+            future_feature()
+
+        return saved_files_info, openai_keys
