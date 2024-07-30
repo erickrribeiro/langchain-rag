@@ -9,7 +9,7 @@ def autoplay_audio3(message: str) -> None:
 
     with open(file_path, mode="rb") as reader:
         b64 = base64.b64encode(reader.read()).decode()
-        if st.session_state["enable_audio"]:
+        if st.session_state.get("enable_audio", False):
             md = f"""
                 <audio id="audioTag" controls autoplay>
                 <source src="data:audio/mp3;base64,{b64}"  type="audio/mpeg" format="audio/mpeg">
