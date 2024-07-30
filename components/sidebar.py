@@ -84,5 +84,5 @@ def sidebar():
         if database_button:
             future_feature()
 
-        st.write("Versão: 1.0.2")
+        st.write("Versão: 1.0.3")
         return saved_files_info, openai_keys
